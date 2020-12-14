@@ -18,13 +18,21 @@ public class PartidaController {
 	@Autowired
 	PartidaServices ps;
 
-	@PostMapping()
+	@PostMapping(path = "")
 	public ResponseEntity<?> postPartida() {
 		return ResponseEntity.status(HttpStatus.OK).body(ps.crearPartida());
 	}
 
 	@PutMapping(path = "{idPartida}")
 	public ResponseEntity<?> putPartida(@PathVariable int idPartida,@RequestParam String adivinando) {
-		return ResponseEntity.status(HttpStatus.OK).body(ps.existeLetra(adivinando, idPartida));
+		ResponseEntity<?> res;
+		
+		if (adivinando.length() > 1) {
+			res = ResponseEntity.status(HttpStatus.OK).body("Solo de uno en uno");
+		} else {
+			res = ResponseEntity.status(HttpStatus.OK).body(ps.existeLetra(adivinando, idPartida));
+		}
+		
+		return res;
 	}
 }
