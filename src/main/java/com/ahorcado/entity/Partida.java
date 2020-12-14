@@ -1,7 +1,101 @@
 package com.ahorcado.entity;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Partida {
-	private Palabra p;
+	private AtomicInteger identificador;
+	private Integer id = 0;
+	private String palabraAdivinar;
+	private String palabraOcultado;
 	private int intento;
-	private String pOculta;
+	private boolean finish;
+
+	public Partida() {
+		super();
+		this.id = identificador.addAndGet(1);
+		this.palabraAdivinar = "iesjacaranda";
+		this.intento = 7;
+		this.finish = Boolean.FALSE;
+	}
+
+	public String getPalabraAdivinar() {
+		return palabraAdivinar;
+	}
+
+	public void setPalabraAdivinar(String palabraAdivinar) {
+		this.palabraAdivinar = palabraAdivinar;
+	}
+
+	public String getPalabraOculta() {
+		return palabraOcultado;
+	}
+
+	public void setPalabraOculta(String pOculta) {
+		this.palabraOcultado = pOculta;
+	}
+
+	public int getIntento() {
+		return intento;
+	}
+
+	public void setIntento(int intento) {
+		this.intento = intento;
+	}
+
+	public boolean isFinish() {
+		return finish;
+	}
+
+	public void setFinish(boolean finish) {
+		this.finish = finish;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + intento;
+		result = prime * result + ((palabraOcultado == null) ? 0 : palabraOcultado.hashCode());
+		result = prime * result + ((palabraAdivinar == null) ? 0 : palabraAdivinar.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Partida other = (Partida) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (intento != other.intento)
+			return false;
+		if (palabraOcultado == null) {
+			if (other.palabraOcultado != null)
+				return false;
+		} else if (!palabraOcultado.equals(other.palabraOcultado))
+			return false;
+		if (palabraAdivinar == null) {
+			if (other.palabraAdivinar != null)
+				return false;
+		} else if (!palabraAdivinar.equals(other.palabraAdivinar))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Partida "+id+"[Ocultado: " + palabraOcultado + " | Vidas: " + intento + "]";
+	}
 }
