@@ -20,7 +20,7 @@ public class PartidaServices {
 		this.partidas = partidas;
 	}
 
-	private String ocultarPalabra(String palabra) {
+	public String ocultarPalabra(String palabra) {
 		StringBuilder str = new StringBuilder();
 
 		for (int i = 0; i < palabra.length(); i++) {
@@ -33,7 +33,7 @@ public class PartidaServices {
 
 	public Partida crearPartida() {
 		Partida partida = new Partida();
-		partida.setPalabraOculta(ocultarPalabra(partida.getPalabraAdivinar()));
+		partida.setPalabraOculta(this.ocultarPalabra(partida.getPalabraAdivinar()));
 
 		this.partidas.add(partida);
 

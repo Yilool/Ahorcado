@@ -1,0 +1,1 @@
+Juego del ahoorcado donde el jugador sólo puede preguntar por una letra en cada petición para adivinar la palabra. Además Las respuestas se da en formato json y se incluye tests unitarios.
