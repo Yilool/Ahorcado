@@ -1,14 +1,18 @@
 package com.ahorcado.entity;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Partida {
-	private AtomicInteger identificador;
-	private Integer id = 0;
+	private AtomicInteger identificador = new AtomicInteger(0);
+	private Integer id;
 	private String palabraAdivinar;
 	private String palabraOcultado;
+	private Set<String> letrasUtilizado;
 	private int intento;
 	private boolean finish;
+	private String msg;
 
 	public Partida() {
 		super();
@@ -16,6 +20,8 @@ public class Partida {
 		this.palabraAdivinar = "iesjacaranda";
 		this.intento = 7;
 		this.finish = Boolean.FALSE;
+		this.letrasUtilizado = new HashSet<>();
+		this.msg = "Introduzca una letra para adivinar la palabra!!";
 	}
 
 	public String getPalabraAdivinar() {
@@ -48,6 +54,22 @@ public class Partida {
 
 	public void setFinish(boolean finish) {
 		this.finish = finish;
+	}
+
+	public Set<String> getLetrasUtilizado() {
+		return letrasUtilizado;
+	}
+
+	public void setLetrasUtilizado(Set<String> letrasUtilizado) {
+		this.letrasUtilizado = letrasUtilizado;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	public Integer getId() {
