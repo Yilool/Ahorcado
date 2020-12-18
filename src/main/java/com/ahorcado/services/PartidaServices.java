@@ -56,11 +56,11 @@ public class PartidaServices {
 			if (p.getPalabraAdivinar().indexOf(adivinando) > -1) {
 				for (int i = 0; i < p.getPalabraAdivinar().length(); i++) {
 					if (obtenerLetraDeCadena(p.getPalabraAdivinar(), i).equalsIgnoreCase(adivinando)) {
-						str.append(adivinando.toLowerCase() + " ");
+						str.append(adivinando.toLowerCase());
 					} else if (!obtenerLetraDeCadena(p.getPalabraOculta(), i).equalsIgnoreCase("*")) {
-						str.append(String.valueOf(p.getPalabraOculta().charAt(i)) + " ");
+						str.append(String.valueOf(p.getPalabraOculta().charAt(i)));
 					} else {
-						str.append("? ");
+						str.append("?");
 					}
 				}
 				
