@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ahorcado.entity.Partida;
+import com.ahorcado.model.entity.Partida;
 
 @Service
 public class PartidaServices {
