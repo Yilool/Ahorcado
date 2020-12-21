@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.ahorcado.entity.Partida;
+import com.ahorcado.model.entity.Partida;
 
 class PartidaServicesTest {
 	//Class Under Test

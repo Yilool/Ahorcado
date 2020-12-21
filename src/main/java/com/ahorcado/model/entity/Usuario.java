@@ -1,4 +1,4 @@
-package com.ahorcado.entity;
+package com.ahorcado.model.entity;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,4 +1,4 @@
-package com.ahorcado.entity;
+package com.ahorcado.model.entity;
 
 import java.util.HashSet;
 import java.util.Set;

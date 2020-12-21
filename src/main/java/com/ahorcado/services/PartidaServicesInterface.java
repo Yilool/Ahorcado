@@ -1,6 +1,6 @@
 package com.ahorcado.services;
 
-import com.ahorcado.entity.Partida;
+import com.ahorcado.model.entity.Partida;
 
 public interface PartidaServicesInterface {
 	public Partida crearPartida();
