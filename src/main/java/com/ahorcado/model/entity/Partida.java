@@ -1,27 +1,58 @@
-package com.ahorcado.entity;
+package com.ahorcado.model.entity;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.hangman.entity.Player;
+
+@Entity(name = "Partida")
 public class Partida {
-	private AtomicInteger identificador = new AtomicInteger(0);
+	
+	/** Identifiacador de la partida **/
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_partida")
 	private Integer id;
+	
+	/** Palabra a adivinar **/
+	@Column(name = "palabra_adivinar")
 	private String palabraAdivinar;
+	
+	/** Palabra a adivinar oculto **/
+	@Column(name = "adivinar_oculto")
 	private String palabraOcultado;
+	
+	/** Letras utilizados **/
 	private Set<String> letrasUtilizado;
+	
+	/** Fallos permitidos **/
 	private int intento;
+	
+	/** Estado de la partida **/
 	private boolean finish;
+	
+	/** Mensaje de cada ronda **/
 	private String msg;
+	
+	/** Jugador de la partida **/
+	@OneToOne(targetEntity = Jugador.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	private Jugador jugador;
 
-	public Partida() {
+	public Partida(Jugador jugador) {
 		super();
-		this.id = identificador.addAndGet(1);
 		this.palabraAdivinar = "iesjacaranda";
 		this.intento = 7;
 		this.finish = Boolean.FALSE;
 		this.letrasUtilizado = new HashSet<>();
-		this.msg = "Introduzca una letra para adivinar la palabra!!";
+		this.msg = "Para adivinar introduzca una letra, ¡solo de una en una!:";
 	}
 
 	public String getPalabraAdivinar() {
@@ -72,6 +103,14 @@ public class Partida {
 		this.msg = msg;
 	}
 
+	public Jugador getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -118,6 +157,6 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return "Partida "+id+"[Ocultado: " + palabraOcultado + " | Vidas: " + intento + "]";
+		return "Partida "+id+": [Ocultado: " + palabraOcultado + " | Vidas: " + intento + "| Finalizado: "+ finish + "]";
 	}
 }
