@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import com.ahorcado.model.entity.Jugador;
 import com.ahorcado.model.entity.Partida;
 import com.ahorcado.model.repository.JugadorRepository;
 import com.ahorcado.model.repository.PartidaRepository;
+=======
+import com.ahorcado.model.entity.Partida;
+>>>>>>> fa85ed68fc0987a009ee8923a59425a659c39d1f
 
 @Service
 public class PartidaServices {
